@@ -1,0 +1,34 @@
+.list-full {
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    width: 100%;
+}
+
+.book-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 20px;
+}
+
+.book {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 200px;
+    height: 340px;
+    overflow: hidden;
+}
+
+.book-thumbnail-container {
+    width: 165px;
+    height: 225px;
+}
+
+.book-thumbnail {
+    width: 100%;
+    height: 100%;
+}

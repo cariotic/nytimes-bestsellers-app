@@ -1,1 +1,18 @@
-<p>list works!</p>
+<div *ngIf="list" class="list-full">
+    <h2 class="list-title">{{list.display_name}}</h2>
+    <div class="book-list">
+        <ng-container *ngFor="let book of list.books">
+            <div class="book">
+                <div class="book-thumbnail-container">
+                    <img src={{book.book_image}} alt="Cover art" class="book-thumbnail">
+                </div>
+                <div class="book-description">
+                    <p class="book-title">{{book.title}}</p>
+                    <p class="book-author">{{book.author}}</p>
+                    <p class="book-publisher">{{book.publisher}}</p>
+                    <p class="book-summary">{{book.description}}</p>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
