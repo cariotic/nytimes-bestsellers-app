@@ -1,0 +1,30 @@
+.lists {
+    display: flex;
+    flex-direction: column;
+}
+
+.list {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.list-name {
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.books {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.book {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 260px;
+    height: 380px;
+    overflow: hidden;
+    border-radius: 5px;
+}
