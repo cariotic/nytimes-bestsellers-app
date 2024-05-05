@@ -8,11 +8,14 @@ import { HomeComponent } from './components/home/home.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HttpParamsInterceptor } from './interceptors/http-params.interceptor';
 import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptor';
+import { ListComponent } from './components/list/list.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

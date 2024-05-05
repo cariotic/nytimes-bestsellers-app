@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { APIResponse, List } from 'src/app/models';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { APIResponseOverview, List } from 'src/app/models';
 import { BookDataService } from 'src/app/service/book-data.service';
 
 @Component({
@@ -8,23 +9,41 @@ import { BookDataService } from 'src/app/service/book-data.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   public lists?: Array<List>;
+  public publicationDate?: string;
+  private routeSub?: Subscription;
+  private listSub?: Subscription;
   
   constructor(
     private bookDataService: BookDataService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getBestsellers();
   }
 
   getBestsellers(): void {
-    this.bookDataService
+    this.listSub = this.bookDataService
     .getBestsellersOverview()
-    .subscribe((bestsellersLists: APIResponse) => {
+    .subscribe((bestsellersLists: APIResponseOverview) => {
       this.lists = bestsellersLists.results.lists;
+      this.publicationDate = bestsellersLists.results.bestsellers_date;
       console.log(bestsellersLists);
     });
+  }
+
+  viewFullList(listName: string): void {
+    this.router.navigate(['lists', listName]);
+  }
+
+  ngOnDestroy(): void {
+    if(this.listSub) {
+      this.listSub.unsubscribe();
+    }
+    if(this.routeSub) {
+      this.routeSub.unsubscribe();
+    }
   }
 }

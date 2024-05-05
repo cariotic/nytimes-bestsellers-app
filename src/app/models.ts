@@ -1,11 +1,11 @@
-export interface APIResponse {
+export interface APIResponseOverview {
     status: string
     copyright: string
     num_results: number
-    results: Results
+    results: ResultsOverview
   }
   
-  export interface Results {
+  export interface ResultsOverview {
     bestsellers_date: string
     published_date: string
     published_date_description: string
@@ -15,14 +15,14 @@ export interface APIResponse {
   }
   
   export interface List {
-    list_id: number
+    list_id?: number
     list_name: string
     list_name_encoded: string
     display_name: string
     updated: string
-    list_image: any
-    list_image_width: any
-    list_image_height: any
+    list_image?: any
+    list_image_width?: any
+    list_image_height?: any
     books: Book[]
   }
   
@@ -57,4 +57,27 @@ export interface APIResponse {
   export interface BuyLink {
     name: string
     url: string
+  }
+
+  export interface APIResponseFullList {
+    status: string
+    copyright: string
+    num_results: number
+    last_modified: string
+    results: ResultsFullList
+  }
+  
+  export interface ResultsFullList {
+    list_name: string
+    list_name_encoded: string
+    bestsellers_date: string
+    published_date: string
+    published_date_description: string
+    next_published_date: string
+    previous_published_date: string
+    display_name: string
+    normal_list_ends_at: number
+    updated: string
+    books: Book[]
+    corrections: any[]
   }

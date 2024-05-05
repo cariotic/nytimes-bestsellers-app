@@ -1,7 +1,7 @@
 <div class="lists">
     <ng-container *ngFor="let list of lists">
         <div class="list">
-            <h2 class="list-name">{{list.display_name}}</h2>
+            <h2 class="list-name" (click)="viewFullList(list.list_name_encoded)">{{list.display_name}}</h2>
             <div class="books">
                 <ng-container *ngFor="let book of list.books">
                     <div class="book">
