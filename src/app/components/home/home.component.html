@@ -1,16 +1,20 @@
 <div class="lists">
-    <div class="list">
-        <h2 class="list-name"></h2>
-        <div class="books">
-            <div class="book">
-                <div class="book-thumbnail-container">
-                    <img src="#" alt="" class="book-thumbnail">
-                </div>
-                <div class="book-description">
-                    <p class="book-title"></p>
-                    <p class="book-author"></p>
-                </div>
+    <ng-container *ngFor="let list of lists">
+        <div class="list">
+            <h2 class="list-name">{{list.display_name}}</h2>
+            <div class="books">
+                <ng-container *ngFor="let book of list.books">
+                    <div class="book">
+                        <div class="book-thumbnail-container">
+                            <img src={{book.book_image}} alt="Cover art" class="book-thumbnail">
+                        </div>
+                        <div class="book-description">
+                            <p class="book-title">{{book.title}}</p>
+                            <p class="book-author">{{book.author}}</p>
+                        </div>
+                    </div>
+                </ng-container>
             </div>
         </div>
-    </div>
+    </ng-container>
 </div>
